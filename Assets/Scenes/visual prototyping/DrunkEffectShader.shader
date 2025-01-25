@@ -75,7 +75,7 @@ Shader "CustomShaders/DrunkEffect"
 
                 float4 finalRender = lerp(col,distorted,t);
                 
-                return distorted;
+                return col+distorted;
             }
             ENDCG
         }
