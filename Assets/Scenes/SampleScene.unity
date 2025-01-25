@@ -436,9 +436,9 @@ MonoBehaviour:
   farnemiesGroup: []
   midEnemiesGroup: []
   closeEnemiesGroup: []
-  fartimerrange: {x: 5.96, y: 10.56}
-  midTimerRange: {x: 2, y: 7}
-  closeTimerRange: {x: 1, y: 5}
+  fartimerrange: {x: 2, y: 5}
+  midTimerRange: {x: 1, y: 3}
+  closeTimerRange: {x: 0.5, y: 2}
 --- !u!4 &163896388
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 70.119995, y: 60.669983}
+  m_AnchoredPosition: {x: 470, y: 61}
   m_SizeDelta: {x: 92.25, y: 32.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381796141
@@ -2363,9 +2363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18010f33bb1ad074697dfa5464b59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerIncrement: 0.25
+  powerIncrement: 0.5
   powerMax: 3.5
-  decreaseResetTime: 2
+  decreaseResetTime: 0.4
   decreaseDecrement: 1
   levelTimerMax: 60
   currentLevelTimer: 0
