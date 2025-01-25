@@ -102,8 +102,9 @@ MonoBehaviour:
   speed: 3
   points: 10
   moveRight: 0
-  canMove: 1
+  isKilled: 0
   particle: {fileID: 0}
+  _as: {fileID: 0}
 --- !u!61 &-5566312738971939350
 BoxCollider2D:
   m_ObjectHideFlags: 0
