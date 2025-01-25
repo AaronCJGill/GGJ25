@@ -74,8 +74,10 @@ Shader "CustomShaders/DrunkEffect"
 
 
                 float4 finalRender = lerp(col,distorted,t);
-                
-                return col+distorted;
+
+                //adds a blend effect to the base screen capture
+                float4 finalBlended = 1 - (1 - col) * (1 - distorted);
+                return finalBlended;
             }
             ENDCG
         }
