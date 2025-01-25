@@ -118,6 +118,8 @@ public class BottleBehavior : MonoBehaviour
                     new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
                         liquidImagey);
                 reloadTXT.text = "";
+                
+                //increase shader
             }
         }
     }
@@ -174,7 +176,8 @@ public class BottleBehavior : MonoBehaviour
         timeText.text = String.Format("{0:0.##}",60-timer);
         pointsText.text = "points: " + points;
         fizzSlider.value = powerAmnt;
-        powertext.text = powerAmnt+"";
+        //powertext.text = powerAmnt+"";
+        powertext.text = String.Format("{0:0.##}",powerAmnt);
     }
 
     public void addPoints(int pointsToAdd)
