@@ -14,7 +14,7 @@ public class BottleBehavior : MonoBehaviour
     float powerIncrement = 0.25f;
     [SerializeField]
     float powerMax = 3.5f;
-    float decreaseTimerMax = 3f;
+    float decreaseTimerMax = .8f;
     [SerializeField]
     [Tooltip("How much time before the bottle fizz starts to go back down again")]
     float decreaseResetTime = 2;
@@ -59,6 +59,11 @@ public class BottleBehavior : MonoBehaviour
         instance = this;
             
         liquidImagey = liquidImage.GetComponent<RectTransform>().anchoredPosition.y;
+        
+        //reset shaders
+        ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
+        float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
+        ImageFXRef.effectMaterial.SetFloat("_DistAmount", 0f);
     }
 
     private int ammoCounter = 6; //amount of shots you have
@@ -120,9 +125,15 @@ public class BottleBehavior : MonoBehaviour
                 reloadTXT.text = "";
                 
                 //increase shader
+               ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
+               float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
+               ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel+0.002f);
             }
         }
     }
+
+    public Camera mainCam;
+    
 
 	private float timer = 0;
 
@@ -152,7 +163,7 @@ public class BottleBehavior : MonoBehaviour
             decreaseTimerMax = Time.time + decreaseResetTime;
         }
         //Debug.Log("decreaseTimer " + decreaseTimer + " -- decreaseTimerMax " + decreaseTimerMax);
-        if (Time.time >= decreaseTimerMax)
+        if (Time.time >= decreaseTimerMax) //takes too long to decrease, should decrease faster
         {
             //goes down at a consistent rate
             powerAmnt -= decreaseDecrement * Time.deltaTime;
