@@ -2230,6 +2230,7 @@ MonoBehaviour:
   fizzbubbles: {fileID: 1827134915349843341, guid: 7f5863d9842d08b4886fed7f70c08642, type: 3}
   corkObject: {fileID: 0}
   powertext: {fileID: 431375029}
+  liquidImage: {fileID: 1223072904}
 --- !u!1 &1662342150
 GameObject:
   m_ObjectHideFlags: 0
