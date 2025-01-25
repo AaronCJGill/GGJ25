@@ -57,33 +57,82 @@ public class BottleBehavior : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
+            
+        liquidImagey = liquidImage.GetComponent<RectTransform>().anchoredPosition.y;
     }
+
+    private int ammoCounter = 6; //amount of shots you have
+    public Image liquidImage;
+
+    private int changeY = 8;
+    float liquidImagey;
+
+    public TextMeshProUGUI reloadTXT;
     private void shootBehavior()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
-            if (powerAmnt >= 2.5)
+            if (ammoCounter > 0)
             {
-                Instantiate(fizzbubbles, far);
-            }
-            else if (powerAmnt >= 1.5f)
-            {
-                Instantiate(fizzbubbles, mid);
+                if (ammoCounter == 1)
+                    reloadTXT.text = "RELOAD with SPACE";
+                if (powerAmnt >= 3)
+                {
+                    Instantiate(fizzbubbles, far);
+                    liquidImage.GetComponent<RectTransform>().anchoredPosition = 
+                        new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
+                            liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
+                    powerAmnt = 0;
+                    ammoCounter--;
+                }
+                else if (powerAmnt >= 2)
+                {
+                    Instantiate(fizzbubbles, mid);
+                    liquidImage.GetComponent<RectTransform>().anchoredPosition = 
+                        new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
+                            liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
+                    powerAmnt = 0;
+                    ammoCounter--;
 
+                }
+                else if (powerAmnt >= 1)
+                {
+                    Instantiate(fizzbubbles, close);
+                    liquidImage.GetComponent<RectTransform>().anchoredPosition = 
+                        new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
+                            liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
+                    powerAmnt = 0;
+                    ammoCounter--;
+                }
+                else
+                {
+                    //fizzles down some sad precum of champagne
+                }
+                //powerAmnt = 0;
+                
             }
-            else if (powerAmnt >= 0.75)
+            else // if reloading
             {
-                Instantiate(fizzbubbles, close);
+                ammoCounter = 6;
+                liquidImage.GetComponent<RectTransform>().anchoredPosition = 
+                    new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
+                        liquidImagey);
+                reloadTXT.text = "";
             }
-            else
-            {
-                //fizzles down some sad precum of champagne
-            }
-            powerAmnt = 0;
-
         }
+    }
 
-        if (Time.time >= 60) // 61 (+1 of timer)
+	private float timer = 0;
+
+    private void Update()
+    {
+        shootBehavior();
+        shakeBehavior();
+        reloadBehavior();
+        updateGraphics();
+		
+		timer += Time.deltaTime;
+		if (timer >= 60) // 61 (+1 of timer)
         {
             //change scene, level is over
             Debug.Log("Change Scene");
@@ -93,17 +142,9 @@ public class BottleBehavior : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        shootBehavior();
-        shakeBehavior();
-        reloadBehavior();
-        updateGraphics();
-    }
-
     private void shakeBehavior()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ammoCounter > 0)
         {
             powerAmnt += powerIncrement;
             decreaseTimerMax = Time.time + decreaseResetTime;
@@ -130,7 +171,7 @@ public class BottleBehavior : MonoBehaviour
     {
         //change timer text
         //timeText.text = String.Format("{0:0.##}",Time.time)+ " / " + levelTimerMax+".00";
-        timeText.text = String.Format("{0:0.##}",60-Time.time);
+        timeText.text = String.Format("{0:0.##}",60-timer);
         pointsText.text = "points: " + points;
         fizzSlider.value = powerAmnt;
         powertext.text = powerAmnt+"";
