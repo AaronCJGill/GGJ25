@@ -6,10 +6,10 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 
-    float levelTimerMax;
     //three lanes
     [SerializeField]
     Transform fawSpawnerL, fawSpawnerR, midSpawnerL, midSpawnerR, closeSpawnerL, closeSpawnerR;
+    [Header("Prefabs")]
     [SerializeField]
     List<GameObject> farEnemies = new List<GameObject>();
     [SerializeField]
@@ -26,15 +26,21 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     List<GameObject> closeEnemiesGroup = new List<GameObject>();
 
-    [SerializeField]
     float farTimer, midTimer, closeTimer;
+
     [SerializeField]
+    [Tooltip("The X is going to be the minimun time it takes to spawn, the Y will be the maximum time to spawn. DO NOT LET X BE BIGGER THAN Y")]
+    [Header("Spawn Timers")]
     Vector2 fartimerrange, midTimerRange, closeTimerRange;
     //timer is set to whatever the time should be
     public float speedMultiplier {
         get
         {
-            float x = (Time.time > levelTimerMax / 2) ? 0 : (Time.time / levelTimerMax) * 0.25f;
+            //basically speeds up the enemy in the last half of the round. 
+            //the last 25% of the round the enemies gradually become faster
+            //we multiply this number with the speed and add it back to the unmodified speed: speed += speed * x
+            //accessed in the 
+            float x = (Time.time > BottleBehavior.instance.levelTimerMax / 2) ? 0 : (Time.time / BottleBehavior.instance.levelTimerMax) * 0.25f;
             return x;
         }
     }
@@ -47,7 +53,6 @@ public class EnemyManager : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
-        
     }
 
     enum loc
@@ -63,12 +68,15 @@ public class EnemyManager : MonoBehaviour
         midTimer = Time.time + (Random.Range( midTimerRange.x, midTimerRange.y));
         closeTimer = Time.time + (Random.Range(closeTimerRange.x, closeTimerRange.y));
 
-        levelTimerMax = Time.time + 40;
+        BottleBehavior.instance.levelTimerMax = Time.time + 40;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //checks each of the timers
+
+
         if (Time.time > farTimer)
         {
             //spawn an enemy at the far position
@@ -79,7 +87,31 @@ public class EnemyManager : MonoBehaviour
             //reset enemy timer
             farTimer = Time.time + (Random.Range(fartimerrange.x, fartimerrange.y));
 
-            Debug.Log("Timer: " + farTimer +  "  == " + ( farTimer - Time.time));
+            //Debug.Log("Timer: " + farTimer +  "  == " + ( farTimer - Time.time));
+
+        }
+
+        if (Time.time > midTimer)
+        {
+            //spawn an enemy at the mid position
+            if (useSpawnPatterns)
+                spawnEnemy(midEnemiesGroup[Random.Range(0, farnemiesGroup.Count)], loc.mid);
+            else
+                spawnEnemy(midEnemies[Random.Range(0, midEnemies.Count)], loc.mid);
+            //reset enemy timer
+            midTimer = Time.time + (Random.Range(midTimerRange.x, midTimerRange.y));
+
+        }
+
+        if (Time.time > closeTimer)
+        {
+            //spawn an enemy at the close position
+            if (useSpawnPatterns)
+                spawnEnemy(closeEnemiesGroup[Random.Range(0, closeEnemiesGroup.Count)], loc.close);
+            else
+                spawnEnemy(closeEnemies[Random.Range(0, closeEnemies.Count)], loc.close);
+            //reset enemy timer
+            closeTimer = Time.time + (Random.Range(closeTimerRange.x, closeTimerRange.y));
 
         }
     }
@@ -89,13 +121,7 @@ public class EnemyManager : MonoBehaviour
     //should go up to 25% faster. (timer/timermax * 0.25f) 
     private void spawnEnemy(GameObject enemy, loc location)
     {
-        int x = Random.Range(0, 2);
-
-        //basically speeds up the enemy in the last half of the round. 
-        //the last 25% of the round the enemies gradually become faster
-
-        //half of the time
-        //time.time/maxtime
+        int x = Random.Range(0, 2);//either 0 or 1
 
 
         //spawns the enemy at a 
@@ -105,7 +131,7 @@ public class EnemyManager : MonoBehaviour
                 if (x == 0)
                 {
                     GameObject g = Instantiate(enemy, fawSpawnerL);  //left side
-                    Enemy e = g.GetComponent<Enemy>();
+                    //Enemy e = g.GetComponent<Enemy>();
                     //e.initialize(e.speed);
                 }
                 else

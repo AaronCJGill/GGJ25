@@ -7,9 +7,15 @@ public class Enemy : MonoBehaviour
     public float speed;
     public int points;
     public bool moveRight;
+    public bool isKilled = false;
+
 
     [SerializeField]
     GameObject particle;
+
+    float killspeedX, killspeedY;
+    [SerializeField]
+    AudioSource _as;
 
     //enemies can get up to 25% faster as time goes on
     public void initialize(float speed, bool moveRight)
@@ -29,7 +35,10 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        Move();
+        if (!isKilled)
+            Move();
+        else
+            killBehavior();
     }
     private void Move()
     {
@@ -47,10 +56,28 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
-        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        Debug.Log("Kill");
+        isKilled = true;
+        //make a sound
+        //communicate that this enemy has died
+        BottleBehavior.instance.addPoints(points);
+
+        killspeedY = Random.Range(20, 40);
+        killspeedX = Random.Range(-20, 20);
+
+        //TODO:
+        //ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         //make this take on the sprite of this enemy
         //ps.material to some shit
-            //change the material of this
+        //change the material of this
+
+    }
+
+    public void killBehavior()
+    {
+
+        //move in random direction
+        transform.Translate(new Vector2(killspeedX * Time.deltaTime, killspeedY * Time.deltaTime));
 
     }
 }
