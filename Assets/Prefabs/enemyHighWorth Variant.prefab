@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemyHighWorth Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.68935907
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.35686272
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.81960785
+      objectReference: {fileID: 0}
     - target: {fileID: 6285388585532931139, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
