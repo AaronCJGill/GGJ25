@@ -83,15 +83,9 @@ public class BottleBehavior : MonoBehaviour
 
         }
 
-        if (Time.time >= 60) // 61 (+1 of timer)
-        {
-            //change scene, level is over
-            Debug.Log("Change Scene");
-            SceneManager.LoadScene("EndScene");
-            
-            //maybe retain the score here
-        }
     }
+
+	private float timer = 0;
 
     private void Update()
     {
@@ -99,6 +93,16 @@ public class BottleBehavior : MonoBehaviour
         shakeBehavior();
         reloadBehavior();
         updateGraphics();
+		
+		timer += Time.deltaTime;
+		if (timer >= 60) // 61 (+1 of timer)
+        {
+            //change scene, level is over
+            Debug.Log("Change Scene");
+            SceneManager.LoadScene("EndScene");
+            
+            //maybe retain the score here
+        }
     }
 
     private void shakeBehavior()
@@ -130,7 +134,7 @@ public class BottleBehavior : MonoBehaviour
     {
         //change timer text
         //timeText.text = String.Format("{0:0.##}",Time.time)+ " / " + levelTimerMax+".00";
-        timeText.text = String.Format("{0:0.##}",60-Time.time);
+        timeText.text = String.Format("{0:0.##}",60-timer);
         pointsText.text = "points: " + points;
         fizzSlider.value = powerAmnt;
         powertext.text = powerAmnt+"";
