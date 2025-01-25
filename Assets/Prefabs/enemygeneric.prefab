@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  points: 10
+  points: 20
   moveRight: 0
   isKilled: 0
   particle: {fileID: 0}
