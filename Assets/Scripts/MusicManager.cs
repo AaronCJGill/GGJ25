@@ -18,14 +18,10 @@ public class MusicManager : MonoBehaviour
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
-            Debug.Log("Destroy musicmanager");
-
         }
         else if (instance == null && instance != this)
         {
             instance = this;
-            Debug.Log("setting musicmanager");
-
         }
         DontDestroyOnLoad(gameObject);
     }
