@@ -6,14 +6,18 @@ public class AnimatedBottle : MonoBehaviour
 {
     public AudioSource _as;
 
-    public List<AudioClip> clips = new List<AudioClip>();
+    public List<AudioClip> PopSoundClips = new List<AudioClip>();
+    public List<AudioClip> BottleChangeClips = new List<AudioClip>();
+    public List<AudioClip> FizzSoundClips = new List<AudioClip>();
+    public List<AudioClip> BottleBreakSound = new List<AudioClip>();
+
 
     public void playClip()
     {
         //play sound
         Debug.Log("Need to play glass sound");
-       //_as.clip = clips[ Random.Range(0, clips.Count)];
-       // _as.Play();
+        //_as.clip = clips[ Random.Range(0, clips.Count)];
+        // _as.Play();
     }
     public void bottleHasBeenReset()
     {
@@ -29,5 +33,15 @@ public class AnimatedBottle : MonoBehaviour
     public void finalizeCorkShot()
     {
         BottleBehavior.instance.finalizeCorkShot();
+    }
+
+    public void playBottleChange()
+    {
+
+    }
+
+    public void playFizzSound()
+    {
+
     }
 }
