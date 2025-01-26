@@ -27,8 +27,12 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     AudioSource _as;
 
+    [SerializeField]
+    GameObject ScorePopUp;
     //animation variables
     [SerializeField] GameObject kidAnimatorController;
+
+    public List<AudioClip> hitReactions = new List<AudioClip>();
     
     //enemies can get up to 25% faster as time goes on
     public void initialize(float speed, bool moveRight)
@@ -79,11 +83,12 @@ public class Enemy : MonoBehaviour
         //play animation
         kidAnimatorController.GetComponent<Animator>().SetTrigger("hit");
         BottleBehavior.instance.addPoints(points);
-        
-
+        _as.clip = hitReactions[Random.Range(0, hitReactions.Count)];
         killspeedY = Random.Range(killSpeedYMin, killSpeedYMax);
         killspeedX = Random.Range(killSpeedXMin, killSpeedXMax);
-
+        GameObject p = Instantiate(ScorePopUp, transform);
+        p.GetComponent<TextPopUp>().initThis(points);
+        p.transform.parent = BottleBehavior.instance.canvasReference;
         //TODO:
         //ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         //make this take on the sprite of this enemy

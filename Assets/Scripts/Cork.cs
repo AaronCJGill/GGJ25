@@ -7,9 +7,13 @@ public class Cork : MonoBehaviour
     [SerializeField]
     float speed = 10;
 
+    public AudioSource _as;
+    [SerializeField]
+    AudioClip _clip;
     private void Start()
     {
         Debug.Log("Cork Object Spawned");
+        _as.clip = _clip;
     }
     void Update()
     {
@@ -27,8 +31,11 @@ public class Cork : MonoBehaviour
         if (collision.transform.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().Kill();
+            _as.Play();
         }
     }
+
+
 
 
 }
