@@ -20,17 +20,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_ahmedKid_Far
       objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1600138467, guid: c9e875f87324a489791f82bade78d5c9, type: 3}
+      objectReference: {fileID: -966745567, guid: 155e0151acfbc4c9c80dba296fa0da01, type: 3}
     - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Color.b
-      value: 0.7625891
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Color.g
-      value: 0.35686272
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_SortingOrder
