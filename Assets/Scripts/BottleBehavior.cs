@@ -44,6 +44,8 @@ public class BottleBehavior : MonoBehaviour
     [SerializeField]
     TMP_Text powertext;
     bool hasCork = false;
+    bool isShootingCork = false;
+
     float shotsLeft = 6;
     List<Transform> liquidPositions = new List<Transform>();//positions of the liquid in the bottle
     bool isEmpty { get { return shotsLeft <= 0; } }
@@ -95,11 +97,11 @@ public class BottleBehavior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
             Debug.Log("Shots left " + ammoCounter);
-            if (hasCork) // when cork is shot
+            if (hasCork && !isShootingCork) // when cork is shot
             {
                 Debug.Log("Shooting Cork");
                 bottleObjectTemp.SetTrigger("ShootCork");
-
+                isShootingCork = true;
                 reloadTXT.text = "";
                 //corkObject.SetActive(false);
             }
@@ -108,8 +110,6 @@ public class BottleBehavior : MonoBehaviour
                 //play the sound so the player knows that theyre shooting
                 if(powerAmnt >= 1)
                     AnimatedBottle.instance.playFizzSound();//only play a sound if we shoot
-                if (ammoCounter == 1)
-                    reloadTXT.text = "RELOAD with SPACE";
                 if (powerAmnt >= 3)
                 {
                     Instantiate(fizzbubbles, far);
@@ -117,8 +117,13 @@ public class BottleBehavior : MonoBehaviour
                         new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
+
+
+                    if (ammoCounter == 1)
+                        reloadTXT.text = "RELOAD with SPACE";
                     ammoCounter--;
                     splashFromShot.Play();
+
                 }
                 else if (powerAmnt >= 2)
                 {
@@ -127,6 +132,9 @@ public class BottleBehavior : MonoBehaviour
                         new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
+
+                    if (ammoCounter == 1)
+                        reloadTXT.text = "RELOAD with SPACE";
                     ammoCounter--;
                     splashFromShot.Play();
 
@@ -138,6 +146,9 @@ public class BottleBehavior : MonoBehaviour
                         new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
+
+                    if (ammoCounter == 1)
+                        reloadTXT.text = "RELOAD with SPACE";
                     ammoCounter--;
                     splashFromShot.Play();
                 }
@@ -155,7 +166,6 @@ public class BottleBehavior : MonoBehaviour
                     reloadCoroutine = StartCoroutine(reloadRoutine());
                     //choose a random position from the reloadpositions list
                     bottleUI.SetActive(false);
-
                     bottleObjectTemp.SetTrigger("MoveLeft");
                     reloadTXT.text = "";
                     //corkObject.SetActive(true);
@@ -188,7 +198,6 @@ public class BottleBehavior : MonoBehaviour
     {
         reloadCoroutine = null;//reset reference
 
-
         bottleObjectTemp.ResetTrigger("MoveLeft");
         //bottleObjectTemp.SetTrigger("Idle");
         bottleObjectTemp.ResetTrigger("MoveUp");
@@ -208,6 +217,9 @@ public class BottleBehavior : MonoBehaviour
         ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel + 0.002f);
 
         hasCork = true;
+
+        isShootingCork = false;
+
         reloadTXT.text = "SHOOT CORK with SPACE";
         corkObject.SetActive(true);
         
@@ -283,10 +295,6 @@ public class BottleBehavior : MonoBehaviour
                 spot2.SetActive(false);
             }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                points += 10;
-            }
         }
     }
 
