@@ -106,7 +106,8 @@ public class BottleBehavior : MonoBehaviour
             else if (ammoCounter > 0 && !isReloading)
             {
                 //play the sound so the player knows that theyre shooting
-                AnimatedBottle.instance.playFizzSound();
+                if(powerAmnt >= 1)
+                    AnimatedBottle.instance.playFizzSound();//only play a sound if we shoot
                 if (ammoCounter == 1)
                     reloadTXT.text = "RELOAD with SPACE";
                 if (powerAmnt >= 3)
