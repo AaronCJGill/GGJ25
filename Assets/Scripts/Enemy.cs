@@ -79,6 +79,7 @@ public class Enemy : MonoBehaviour
         //play animation
         kidAnimatorController.GetComponent<Animator>().SetTrigger("hit");
         BottleBehavior.instance.addPoints(points);
+        
 
         killspeedY = Random.Range(killSpeedYMin, killSpeedYMax);
         killspeedX = Random.Range(killSpeedXMin, killSpeedXMax);
