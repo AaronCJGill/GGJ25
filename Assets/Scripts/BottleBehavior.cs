@@ -73,6 +73,8 @@ public class BottleBehavior : MonoBehaviour
     float liquidImagey;
 
     public TextMeshProUGUI reloadTXT;
+
+    public ParticleSystem splashFromShot;
     private void shootBehavior()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
@@ -89,6 +91,7 @@ public class BottleBehavior : MonoBehaviour
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
                     ammoCounter--;
+                    splashFromShot.Play();
                 }
                 else if (powerAmnt >= 2)
                 {
@@ -98,6 +101,7 @@ public class BottleBehavior : MonoBehaviour
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
                     ammoCounter--;
+                    splashFromShot.Play();
 
                 }
                 else if (powerAmnt >= 1)
@@ -108,6 +112,7 @@ public class BottleBehavior : MonoBehaviour
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
                     ammoCounter--;
+                    splashFromShot.Play();
                 }
                 else
                 {
