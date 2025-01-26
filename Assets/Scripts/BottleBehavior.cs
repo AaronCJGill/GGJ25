@@ -187,6 +187,12 @@ public class BottleBehavior : MonoBehaviour
             spot1.SetActive(false);
             spot2.SetActive(false);
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            points += 10;
+        }
+
     }
 
     public GameObject spot1;
@@ -222,7 +228,7 @@ public class BottleBehavior : MonoBehaviour
     {
         //change timer text
         //timeText.text = String.Format("{0:0.##}",Time.time)+ " / " + levelTimerMax+".00";
-        timeText.text = String.Format("{0:0.##}",60-timer);
+        timeText.text = String.Format("{0:0.##}", levelTimerMax - timer);
         pointsText.text = "points: " + points;
         fizzSlider.value = powerAmnt;
         //powertext.text = powerAmnt+"";
@@ -232,6 +238,6 @@ public class BottleBehavior : MonoBehaviour
     public void addPoints(int pointsToAdd)
     {
         points += pointsToAdd;
-        Debug.Log("Piints added " + pointsToAdd + "  -- " + points);
+        //Debug.Log("Piints added " + pointsToAdd + "  -- " + points);
     }
 }

@@ -9,14 +9,17 @@ public class DisplayScore : MonoBehaviour
 {
 
     public TMP_Text textScore;
+    private void Start()
+    {
+        setScoreUI();
 
+    }
 
     private void Update()
     {
-        setScoreUI();
         if (Input.GetKeyDown(KeyCode.C))
         {
-            orderScores("Void", -200);
+            //orderScores("Void", -200);
         }
     }
 
@@ -26,32 +29,41 @@ public class DisplayScore : MonoBehaviour
     }
     private string getScores()
     {
+        string s = "";
+        for (int i = 0; i < ScoreManager.amountOfScoresToSave; i++)
+        {
+            int positionInData = i;
+            string scoreNameKey = "HSName" + positionInData;
+            string scoreNumKey = "HSScore" + positionInData;
+
+            if (!PlayerPrefs.HasKey(scoreNumKey))
+            {
+                s += (i + 1) + ") Empty\n";
+            }
+            else
+                s += (i + 1) + ")" + PlayerPrefs.GetString(scoreNameKey) + " - " + PlayerPrefs.GetInt(scoreNumKey) + "\n";//if the score is 1 then dont add it
+
+        }
+        return s;
+
+        //we can ignore the rest of this
         if (PlayerPrefs.HasKey("Initialized"))
         {
-            string s = "";
-            for (int i = 0; i < ScoreManager.amountOfScoresToSave; i++)
-            {
-                int positionInData = i;
-                string scoreNameKey = "HSName" + positionInData;
-                string scoreNumKey = "HSScore" + positionInData;
-                //if the score is 1 then dont add it
-                s += (i + 1) + ")" + PlayerPrefs.GetString(scoreNameKey) + " - " + PlayerPrefs.GetInt(scoreNumKey) + "\n";
-            }
-            return s;
+
         }
         else
         {
             //display the basic empty thing
-            string s = "";
+            string sx = "";
             for (int i = 0; i < ScoreManager.amountOfScoresToSave; i++)
             {
                 int positionInData = i;
                 string scoreNameKey = "HSName" + positionInData;
                 string scoreNumKey = "HSScore" + positionInData;
                 //if the score is 1 then dont add it
-                s += (i+1) + ")" + PlayerPrefs.GetString(scoreNameKey) + " - " + PlayerPrefs.GetInt(scoreNumKey) + "\n";
+                sx += (i+1) + ")" + PlayerPrefs.GetString(scoreNameKey) + " - " + PlayerPrefs.GetInt(scoreNumKey) + "\n";
             }
-            return s;
+            return sx;
         }
 
     }

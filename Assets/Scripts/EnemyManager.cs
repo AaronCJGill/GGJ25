@@ -68,7 +68,7 @@ public class EnemyManager : MonoBehaviour
         midTimer = Time.time + (Random.Range( midTimerRange.x, midTimerRange.y));
         closeTimer = Time.time + (Random.Range(closeTimerRange.x, closeTimerRange.y));
 
-        BottleBehavior.instance.levelTimerMax = Time.time + 40;
+        //BottleBehavior.instance.levelTimerMax = Time.time + 40;
     }
 
     // Update is called once per frame
