@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2e008770fab4c419e9ac78ee76dcce34
+guid: 4fd41996c6a5645dfb1d339536d18dff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: champagne_shooter_cork_0
+      name: main_shake_0
       rect:
         serializedVersion: 2
-        x: 225
-        y: 930
-        width: 193
-        height: 159
+        x: 17
+        y: 43
+        width: 261
+        height: 1006
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f663905d497c34203b11249aa40ee26b
+      internalID: 682740562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_shake_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 114
+        width: 681
+        height: 961
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca0bca30d0e5a4e05801e058aa8900c4
-      internalID: 1845290546
+      spriteID: ddae613edd8e941de9ca33b431903d09
+      internalID: -540788719
       vertices: []
       indices: 
       edges: []
@@ -154,7 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      champagne_shooter_cork_0: 1845290546
+      main_shake_0: 682740562
+      main_shake_1: -540788719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

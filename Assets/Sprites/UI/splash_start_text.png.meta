@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2e008770fab4c419e9ac78ee76dcce34
+guid: 63f8920d6244d4ef5a228167b8ec31d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: champagne_shooter_cork_0
+      name: splash_start_text_0
       rect:
         serializedVersion: 2
-        x: 225
-        y: 930
-        width: 193
-        height: 159
+        x: 2606
+        y: 1691
+        width: 5107
+        height: 2438
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca0bca30d0e5a4e05801e058aa8900c4
-      internalID: 1845290546
+      spriteID: b9fa8a5795657443695595acf08f0db7
+      internalID: 181279223
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      champagne_shooter_cork_0: 1845290546
+      splash_start_text_0: 181279223
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
