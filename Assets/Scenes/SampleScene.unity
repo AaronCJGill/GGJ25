@@ -8768,11 +8768,11 @@ MonoBehaviour:
   closeSpawnerL: {fileID: 1541582311}
   closeSpawnerR: {fileID: 1306485194}
   farEnemies:
-  - {fileID: 3852737900554579665, guid: 66bf9a0d156fe4421b0f564d7da3b05b, type: 3}
+  - {fileID: 3122601690340056188, guid: 85e775c936a4445589f2d85a07e39840, type: 3}
   midEnemies:
-  - {fileID: 3852737900554579665, guid: 59933e60a64a34d8ea57790b0a0e170e, type: 3}
+  - {fileID: 3122601690340056188, guid: 024f60064f59c402387d70edcef887d6, type: 3}
   closeEnemies:
-  - {fileID: 3852737900554579665, guid: 07d2ad1b0f2f340bab5fdd172481e16e, type: 3}
+  - {fileID: 3122601690340056188, guid: e819a8cb1a71047b4abaad8fd1efa896, type: 3}
   useSpawnPatterns: 0
   farnemiesGroup: []
   midEnemiesGroup: []
