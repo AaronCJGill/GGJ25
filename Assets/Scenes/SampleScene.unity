@@ -6041,6 +6041,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431375027}
   m_CullTransparentMesh: 1
+--- !u!1 &442090043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442090044}
+  m_Layer: 0
+  m_Name: OffScreenPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442090044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442090043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2227764, y: -8.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460649386
 GameObject:
   m_ObjectHideFlags: 0
@@ -7797,7 +7828,7 @@ MonoBehaviour:
   powerMax: 3.5
   decreaseResetTime: 0.4
   decreaseDecrement: 1
-  levelTimerMax: 5
+  levelTimerMax: 60
   currentLevelTimer: 0
   timeText: {fileID: 198204495}
   close: {fileID: 387480225}
@@ -7811,6 +7842,9 @@ MonoBehaviour:
   liquidImage: {fileID: 1223072904}
   reloadTXT: {fileID: 378195023}
   splashFromShot: {fileID: 270696775}
+  reloadPositions: []
+  normalPos: {fileID: 1948255843}
+  offScreenPos: {fileID: 442090044}
   mainCam: {fileID: 519420031}
   spot1: {fileID: 1905485094}
   spot2: {fileID: 1051166301}
@@ -8180,6 +8214,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1038612605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1948255842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948255843}
+  m_Layer: 0
+  m_Name: OnScreenPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948255843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948255842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2227764, y: -4.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1955679471
 GameObject:
   m_ObjectHideFlags: 0
@@ -8363,3 +8428,5 @@ SceneRoots:
   - {fileID: 711855507}
   - {fileID: 687480356}
   - {fileID: 708834739}
+  - {fileID: 1948255843}
+  - {fileID: 442090044}

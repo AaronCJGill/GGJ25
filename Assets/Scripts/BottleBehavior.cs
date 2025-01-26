@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+
 
 public class BottleBehavior : MonoBehaviour
 {
@@ -24,7 +26,6 @@ public class BottleBehavior : MonoBehaviour
     int points = 0;
     public float levelTimerMax = 60;
     public float currentLevelTimer = 0;
-
 
     [Header("In World Objects")]
     [SerializeField]
@@ -47,7 +48,7 @@ public class BottleBehavior : MonoBehaviour
     List<Transform> liquidPositions = new List<Transform>();//positions of the liquid in the bottle
     bool isEmpty { get { return shotsLeft <= 0; } }
     bool isReloading = false;
-    float reloadTimer = 1f; 
+
 
     public static BottleBehavior instance;
     private void Awake()
@@ -64,6 +65,7 @@ public class BottleBehavior : MonoBehaviour
         ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
         float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
         ImageFXRef.effectMaterial.SetFloat("_DistAmount", 0f);
+
     }
 
     private int ammoCounter = 6; //amount of shots you have
@@ -75,11 +77,20 @@ public class BottleBehavior : MonoBehaviour
     public TextMeshProUGUI reloadTXT;
 
     public ParticleSystem splashFromShot;
+
+
+
+    [SerializeField]
+    List<UnityEngine.Transform> reloadPositions = new List<UnityEngine.Transform>();
+    float reloadTimer = 1f;
+    private Coroutine reloadCoroutine;
+
+
     private void shootBehavior()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
-            if (ammoCounter > 0)
+            if (ammoCounter > 0 && !isReloading)
             {
                 if (ammoCounter == 1)
                     reloadTXT.text = "RELOAD with SPACE";
@@ -123,20 +134,64 @@ public class BottleBehavior : MonoBehaviour
             }
             else // if reloading
             {
-                ammoCounter = 6;
-                liquidImage.GetComponent<RectTransform>().anchoredPosition = 
-                    new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
-                        liquidImagey);
-                reloadTXT.text = "";
-                
-                //increase shader
-               ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
-               float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
-               ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel+0.002f);
+                if (reloadCoroutine == null)
+                {
+                    reloadCoroutine = StartCoroutine(reloadRoutine());
+                }
+
             }
         }
     }
+    [SerializeField]
+    GameObject bottleUI;
+    GameObject bottleObjectTemp;
 
+    [SerializeField]
+    public Transform normalPos, offScreenPos;
+
+    public IEnumerator reloadRoutine()
+    {
+        //throws the bottle off screen and pops it back up from the bottom
+        bottleUI.GetComponent<RectTransform>().SetPositionAndRotation(offScreenPos.position , Quaternion.identity);
+        //choose a random position from the reloadpositions list
+        bottleUI.SetActive(false);
+
+        yield return new WaitForSeconds(reloadTimer);
+        //play sound
+        transform.position = offScreenPos.position;
+        transform.rotation = offScreenPos.rotation;
+
+        //lerp to the proper position
+
+        float t = 0;
+        float m = 0.5f;
+        
+        while (t < m)
+        {
+            transform.position = Vector2.Lerp(offScreenPos.position, normalPos.position, t/m);
+            t += Time.deltaTime;
+        }
+
+        transform.position = normalPos.position;
+
+        //
+        yield return new WaitForSeconds(0.5f);
+        reloadCoroutine = null;//reset reference
+
+        Debug.Log("happening");
+        ammoCounter = 6;
+        liquidImage.GetComponent<RectTransform>().anchoredPosition =
+            new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
+                liquidImagey);
+        reloadTXT.text = "";
+
+        //increase shader
+        ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
+        float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
+        ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel + 0.002f);
+    }
+    
+    
     public Camera mainCam;
     
 
@@ -146,7 +201,6 @@ public class BottleBehavior : MonoBehaviour
     {
         shootBehavior();
         shakeBehavior();
-        reloadBehavior();
         updateGraphics();
 		
 		timer += Time.deltaTime;
@@ -161,38 +215,42 @@ public class BottleBehavior : MonoBehaviour
         }
         
         //when the powerAmnt is bigger than 1
-        if (powerAmnt >= 1 && powerAmnt <2)
+        if(!isReloading)
         {
-            //close 2,3 open 1
-            spot1.SetActive(true);
-            spot2.SetActive(false);
-            spot3.SetActive(false);
-        }else if (powerAmnt >= 2 && powerAmnt <3)
-        {
-            //close 1,3 open 2
-            spot2.SetActive(true);
-            spot1.SetActive(false);
-            spot3.SetActive(false);
-        }else if (powerAmnt >= 3)
-        {
-            //close 1,2 open 3
-            spot3.SetActive(true);
-            spot1.SetActive(false);
-            spot2.SetActive(false);
-        }
-        else
-        {
-            //close 1,2,3
-            spot3.SetActive(false);
-            spot1.SetActive(false);
-            spot2.SetActive(false);
-        }
+            if (powerAmnt >= 1 && powerAmnt < 2)
+            {
+                //close 2,3 open 1
+                spot1.SetActive(true);
+                spot2.SetActive(false);
+                spot3.SetActive(false);
+            }
+            else if (powerAmnt >= 2 && powerAmnt < 3)
+            {
+                //close 1,3 open 2
+                spot2.SetActive(true);
+                spot1.SetActive(false);
+                spot3.SetActive(false);
+            }
+            else if (powerAmnt >= 3)
+            {
+                //close 1,2 open 3
+                spot3.SetActive(true);
+                spot1.SetActive(false);
+                spot2.SetActive(false);
+            }
+            else
+            {
+                //close 1,2,3
+                spot3.SetActive(false);
+                spot1.SetActive(false);
+                spot2.SetActive(false);
+            }
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            points += 10;
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                points += 10;
+            }
         }
-
     }
 
     public GameObject spot1;
@@ -214,14 +272,6 @@ public class BottleBehavior : MonoBehaviour
         }
         //decreaseTimer += Time.deltaTime;
         powerAmnt = Mathf.Clamp(powerAmnt, 0, powerMax);
-    }
-
-    private void reloadBehavior()
-    {
-        //do animation
-
-        //
-
     }
 
     private void updateGraphics()
