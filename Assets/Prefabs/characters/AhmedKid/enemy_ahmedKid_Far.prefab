@@ -10,12 +10,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3156416778048148309, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Name
-      value: Enemy_type1
+      value: enemy_ahmedKid_Far
       objectReference: {fileID: 0}
     - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1600138467, guid: c9e875f87324a489791f82bade78d5c9, type: 3}
+    - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7625891
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.35686272
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5455700830557761063, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Controller
       value: 
