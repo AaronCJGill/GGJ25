@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    //public float factor = 30f;
     public void Kill()
     {
         Debug.Log("Kill");
@@ -93,6 +93,9 @@ public class Enemy : MonoBehaviour
         GameObject p = Instantiate(ScorePopUp, transform);
         p.GetComponent<TextPopUp>().initThis(points);
         p.transform.parent = BottleBehavior.instance.canvasReference;
+        //p.transform.position -= new Vector3(0,1,0) * factor;
+
+        p.transform.localScale = Vector3.one;
         //TODO:
         //ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         //make this take on the sprite of this enemy
