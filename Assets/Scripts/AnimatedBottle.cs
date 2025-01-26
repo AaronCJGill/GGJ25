@@ -38,7 +38,7 @@ public class AnimatedBottle : MonoBehaviour
     {
         //should also play sound
         _as.clip = PopSoundClips[Random.Range(0, PopSoundClips.Count)];
-        _as.pitch = Random.Range(0.7f,1.3f);
+        _as.pitch = Random.Range(0.7f,1.5f);
         _as.Play();
         BottleBehavior.instance.shootCork();
     }
@@ -53,7 +53,7 @@ public class AnimatedBottle : MonoBehaviour
     {
         //when the bottle is coming up from the bottom
         _as.clip = BottleChangeClips[Random.Range(0, BottleChangeClips.Count)];
-        _as.pitch = Random.Range(0.7f, 1.3f);
+        _as.pitch = Random.Range(0.7f, 1.5f);
         _as.Play();
     }
 
@@ -61,7 +61,7 @@ public class AnimatedBottle : MonoBehaviour
     {
         //when the player shoots
         _as.clip = FizzSoundClips[Random.Range(0, FizzSoundClips.Count)];
-        _as.pitch = Random.Range(0.7f, 1.3f);
+        _as.pitch = Random.Range(0.7f, 1.5f);
         _as.Play();
     }
 
@@ -69,7 +69,7 @@ public class AnimatedBottle : MonoBehaviour
     {
         //end of moveleft routine
         _as.clip = BottleBreakSound[Random.Range(0, BottleBreakSound.Count)];
-        _as.pitch = Random.Range(0.7f, 1.3f);
+        _as.pitch = Random.Range(0.7f, 1.5f);
         _as.Play();
     }
 
@@ -77,7 +77,7 @@ public class AnimatedBottle : MonoBehaviour
     {
         //used in CorkShot animation
         _as.clip = DrinkingSoundClips[Random.Range(0, DrinkingSoundClips.Count)];
-        _as.pitch = Random.Range(0.7f, 1.3f);
+        _as.pitch = Random.Range(0.7f, 1.5f);
         _as.Play();
     }
 }
