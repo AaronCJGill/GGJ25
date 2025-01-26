@@ -111,10 +111,8 @@ public class BottleBehavior : MonoBehaviour
             else if (ammoCounter > 0 && !isReloading)
             {
                 //play the sound so the player knows that theyre shooting
-                if(powerAmnt >= 1)
-                    AnimatedBottle.
-                        
-                        .playFizzSound();//only play a sound if we shoot
+                if (powerAmnt >= 1)
+                    AnimatedBottle.instance.playFizzSound();//only play a sound if we shoot
                 if (powerAmnt >= 3)
                 {
                     Instantiate(fizzbubbles, far);
