@@ -1,0 +1,470 @@
+fileFormatVersion: 2
+guid: 3be1294ed0c9b45a8ae011f86b774fac
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1022.6666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7e34e04a0df4cb998b5e1e24998930
+      internalID: 378973579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1022.6666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea8f85b0dcafe4cf4b6f0cc8ebeabc67
+      internalID: -149485231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 1022.6666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0be23a3c85a247d9bc1a877fa0e79ba
+      internalID: -778533463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1743
+        y: 1022.6666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbfc23353579c4ed280c22afe2c69ae7
+      internalID: -2143881293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 1022.6666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f600db3de7c7a4b0ba0cb2f00191e5b5
+      internalID: -1759028358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 511.66666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8af4505f4d784d38a69bfe9c6326f2a
+      internalID: 98345764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 511.66666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ed6260d90c4435dab0c10a1db14214
+      internalID: -1050453302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 511.66666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3062b93bb7bd74e438a7c09494fc70fb
+      internalID: -169504726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1743
+        y: 511.66666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be16899064f994a3cae24de541227c83
+      internalID: 288456049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 511.66666
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21a6b916207341ee9f3afeaae51c0b9
+      internalID: 1304097157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.6666565
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baad56a503bad402aaaef4e0513443fc
+      internalID: 1395336176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 0.6666565
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa0d9d5555e74400bdbfef6a44a8b06
+      internalID: -1761268117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 0.6666565
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7e5d70e0d65470aa7c404e3520f49f
+      internalID: -244773837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 1743
+        y: 0.6666565
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b236c387d163a4f08bf90d9aaace4bd4
+      internalID: -2094161760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChampagneSplash_spriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 0.6666565
+        width: 581
+        height: 511.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cb52ca0cb874091b430f4266963126
+      internalID: 291698310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ChampagneSplash_spriteSheet_0: 378973579
+      ChampagneSplash_spriteSheet_1: -149485231
+      ChampagneSplash_spriteSheet_10: 1395336176
+      ChampagneSplash_spriteSheet_11: -1761268117
+      ChampagneSplash_spriteSheet_12: -244773837
+      ChampagneSplash_spriteSheet_13: -2094161760
+      ChampagneSplash_spriteSheet_14: 291698310
+      ChampagneSplash_spriteSheet_2: -778533463
+      ChampagneSplash_spriteSheet_3: -2143881293
+      ChampagneSplash_spriteSheet_4: -1759028358
+      ChampagneSplash_spriteSheet_5: 98345764
+      ChampagneSplash_spriteSheet_6: -1050453302
+      ChampagneSplash_spriteSheet_7: -169504726
+      ChampagneSplash_spriteSheet_8: 288456049
+      ChampagneSplash_spriteSheet_9: 1304097157
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

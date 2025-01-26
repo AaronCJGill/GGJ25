@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -387.4, y: -72}
+  m_AnchoredPosition: {x: -387.40002, y: -72}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65511101
@@ -515,7 +515,7 @@ MonoBehaviour:
   midEnemies:
   - {fileID: 3156416778048148309, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
   closeEnemies:
-  - {fileID: 3705017993181533611, guid: 0311ad6780ff96a47bb2eccf963690b2, type: 3}
+  - {fileID: 3852737900554579665, guid: 07d2ad1b0f2f340bab5fdd172481e16e, type: 3}
   useSpawnPatterns: 0
   farnemiesGroup: []
   midEnemiesGroup: []
@@ -5791,7 +5791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 495.1, y: 61}
+  m_AnchoredPosition: {x: 495.09998, y: 61}
   m_SizeDelta: {x: 92.25, y: 32.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381796141
