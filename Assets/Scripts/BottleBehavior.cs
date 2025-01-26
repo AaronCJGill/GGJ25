@@ -153,7 +153,39 @@ public class BottleBehavior : MonoBehaviour
             
             //maybe retain the score here
         }
+        
+        //when the powerAmnt is bigger than 1
+        if (powerAmnt >= 1 && powerAmnt <2)
+        {
+            //close 2,3 open 1
+            spot1.SetActive(true);
+            spot2.SetActive(false);
+            spot3.SetActive(false);
+        }else if (powerAmnt >= 2 && powerAmnt <3)
+        {
+            //close 1,3 open 2
+            spot2.SetActive(true);
+            spot1.SetActive(false);
+            spot3.SetActive(false);
+        }else if (powerAmnt >= 3)
+        {
+            //close 1,2 open 3
+            spot3.SetActive(true);
+            spot1.SetActive(false);
+            spot2.SetActive(false);
+        }
+        else
+        {
+            //close 1,2,3
+            spot3.SetActive(false);
+            spot1.SetActive(false);
+            spot2.SetActive(false);
+        }
     }
+
+    public GameObject spot1;
+    public GameObject spot2;
+    public GameObject spot3;
 
     private void shakeBehavior()
     {
