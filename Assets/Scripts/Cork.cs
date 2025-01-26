@@ -6,7 +6,11 @@ public class Cork : MonoBehaviour
 {
     [SerializeField]
     float speed = 10;
-    
+
+    private void Start()
+    {
+        Debug.Log("Cork Object Spawned");
+    }
     void Update()
     {
         //moves up constantly
