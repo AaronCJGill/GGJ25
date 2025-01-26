@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+
 
 public class BottleBehavior : MonoBehaviour
 {
@@ -25,7 +27,6 @@ public class BottleBehavior : MonoBehaviour
     public float levelTimerMax = 60;
     public float currentLevelTimer = 0;
 
-
     [Header("In World Objects")]
     [SerializeField]
     TMP_Text timeText;
@@ -42,12 +43,12 @@ public class BottleBehavior : MonoBehaviour
     GameObject corkObject;
     [SerializeField]
     TMP_Text powertext;
-
+    bool hasCork = false;
     float shotsLeft = 6;
     List<Transform> liquidPositions = new List<Transform>();//positions of the liquid in the bottle
     bool isEmpty { get { return shotsLeft <= 0; } }
     bool isReloading = false;
-    float reloadTimer = 1f; 
+
 
     public static BottleBehavior instance;
     private void Awake()
@@ -64,6 +65,7 @@ public class BottleBehavior : MonoBehaviour
         ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
         float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
         ImageFXRef.effectMaterial.SetFloat("_DistAmount", 0f);
+
     }
 
     private int ammoCounter = 6; //amount of shots you have
@@ -73,11 +75,29 @@ public class BottleBehavior : MonoBehaviour
     float liquidImagey;
 
     public TextMeshProUGUI reloadTXT;
+
+    public ParticleSystem splashFromShot;
+
+
+
+    [SerializeField]
+    List<UnityEngine.Transform> reloadPositions = new List<UnityEngine.Transform>();
+    float reloadTimer = 1f;
+    private Coroutine reloadCoroutine;
+    [SerializeField]
+    Transform corkSpawnPosition;
+
+
     private void shootBehavior()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
-            if (ammoCounter > 0)
+            if (hasCork)
+            {
+                Debug.Log("Shooting Cork");
+                bottleObjectTemp.SetTrigger("ShootCork");
+            }
+            else if (ammoCounter > 0 && !isReloading)
             {
                 if (ammoCounter == 1)
                     reloadTXT.text = "RELOAD with SPACE";
@@ -89,6 +109,7 @@ public class BottleBehavior : MonoBehaviour
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
                     ammoCounter--;
+                    splashFromShot.Play();
                 }
                 else if (powerAmnt >= 2)
                 {
@@ -98,6 +119,7 @@ public class BottleBehavior : MonoBehaviour
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
                     ammoCounter--;
+                    splashFromShot.Play();
 
                 }
                 else if (powerAmnt >= 1)
@@ -108,6 +130,7 @@ public class BottleBehavior : MonoBehaviour
                             liquidImage.GetComponent<RectTransform>().anchoredPosition.y - changeY);
                     powerAmnt = 0;
                     ammoCounter--;
+                    splashFromShot.Play();
                 }
                 else
                 {
@@ -118,18 +141,79 @@ public class BottleBehavior : MonoBehaviour
             }
             else // if reloading
             {
-                ammoCounter = 6;
-                liquidImage.GetComponent<RectTransform>().anchoredPosition = 
-                    new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
-                        liquidImagey);
-                reloadTXT.text = "";
-                
-                //increase shader
-               ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
-               float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
-               ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel+0.002f);
+                if (reloadCoroutine == null)
+                {
+                    reloadCoroutine = StartCoroutine(reloadRoutine());
+                    //choose a random position from the reloadpositions list
+                    bottleUI.SetActive(false);
+
+                    bottleObjectTemp.SetTrigger("MoveLeft");
+                    reloadTXT.text = "";
+
+                }
+
             }
         }
+    }
+
+
+
+    [SerializeField]
+    GameObject bottleUI;
+    [SerializeField]
+    Animator bottleObjectTemp;
+
+    [SerializeField]
+    public Transform normalPos, offScreenPos;
+
+    public IEnumerator reloadRoutine()
+    {
+        //throws the bottle off screen and pops it back up from the bottom
+        //bottleObjectTemp.gameObject.GetComponent<RectTransform>().SetPositionAndRotation(offScreenPos.position , Quaternion.identity);
+        yield return new WaitForSeconds(reloadTimer);
+        //this just makes sure we do not do the reload multiple times
+    }
+    
+    public void BottleIsReset()
+    {
+        reloadCoroutine = null;//reset reference
+
+
+        bottleObjectTemp.ResetTrigger("MoveLeft");
+        //bottleObjectTemp.SetTrigger("Idle");
+        bottleObjectTemp.ResetTrigger("MoveUp");
+
+
+
+        Debug.Log("BottleReset");
+        ammoCounter = 6;
+        liquidImage.GetComponent<RectTransform>().anchoredPosition =
+            new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
+                liquidImagey);
+        reloadTXT.text = "";
+
+        //increase shader
+        ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
+        float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
+        ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel + 0.002f);
+
+        hasCork = true;
+    }
+    public void shootCork()
+    {
+        Debug.Log("SpawningCork");
+        hasCork = false;
+        Instantiate(corkObject, corkSpawnPosition);
+        bottleObjectTemp.ResetTrigger("ShootCork");
+        splashFromShot.Play();
+    }
+
+    public void finalizeCorkShot()
+    {
+        Debug.Log("Finalized Cork Shot");
+        bottleUI.SetActive(true);
+        powerAmnt = 0;
+
     }
 
     public Camera mainCam;
@@ -141,45 +225,55 @@ public class BottleBehavior : MonoBehaviour
     {
         shootBehavior();
         shakeBehavior();
-        reloadBehavior();
         updateGraphics();
 		
 		timer += Time.deltaTime;
-		if (timer >= 60) // 61 (+1 of timer)
+		if (timer >= levelTimerMax) // 61 (+1 of timer)
         {
             //change scene, level is over
             Debug.Log("Change Scene");
+            ScoreManager.instance.setScore(points);
             SceneManager.LoadScene("EndScene");
             
             //maybe retain the score here
         }
         
         //when the powerAmnt is bigger than 1
-        if (powerAmnt >= 1 && powerAmnt <2)
+        if(!hasCork)
         {
-            //close 2,3 open 1
-            spot1.SetActive(true);
-            spot2.SetActive(false);
-            spot3.SetActive(false);
-        }else if (powerAmnt >= 2 && powerAmnt <3)
-        {
-            //close 1,3 open 2
-            spot2.SetActive(true);
-            spot1.SetActive(false);
-            spot3.SetActive(false);
-        }else if (powerAmnt >= 3)
-        {
-            //close 1,2 open 3
-            spot3.SetActive(true);
-            spot1.SetActive(false);
-            spot2.SetActive(false);
-        }
-        else
-        {
-            //close 1,2,3
-            spot3.SetActive(false);
-            spot1.SetActive(false);
-            spot2.SetActive(false);
+            if (powerAmnt >= 1 && powerAmnt < 2)
+            {
+                //close 2,3 open 1
+                spot1.SetActive(true);
+                spot2.SetActive(false);
+                spot3.SetActive(false);
+            }
+            else if (powerAmnt >= 2 && powerAmnt < 3)
+            {
+                //close 1,3 open 2
+                spot2.SetActive(true);
+                spot1.SetActive(false);
+                spot3.SetActive(false);
+            }
+            else if (powerAmnt >= 3)
+            {
+                //close 1,2 open 3
+                spot3.SetActive(true);
+                spot1.SetActive(false);
+                spot2.SetActive(false);
+            }
+            else
+            {
+                //close 1,2,3
+                spot3.SetActive(false);
+                spot1.SetActive(false);
+                spot2.SetActive(false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                points += 10;
+            }
         }
     }
 
@@ -204,19 +298,11 @@ public class BottleBehavior : MonoBehaviour
         powerAmnt = Mathf.Clamp(powerAmnt, 0, powerMax);
     }
 
-    private void reloadBehavior()
-    {
-        //do animation
-
-        //
-
-    }
-
     private void updateGraphics()
     {
         //change timer text
         //timeText.text = String.Format("{0:0.##}",Time.time)+ " / " + levelTimerMax+".00";
-        timeText.text = String.Format("{0:0.##}",60-timer);
+        timeText.text = String.Format("{0:0.##}", levelTimerMax - timer);
         pointsText.text = "points: " + points;
         fizzSlider.value = powerAmnt;
         //powertext.text = powerAmnt+"";
@@ -226,6 +312,6 @@ public class BottleBehavior : MonoBehaviour
     public void addPoints(int pointsToAdd)
     {
         points += pointsToAdd;
-        Debug.Log("Piints added " + pointsToAdd + "  -- " + points);
+        //Debug.Log("Piints added " + pointsToAdd + "  -- " + points);
     }
 }
