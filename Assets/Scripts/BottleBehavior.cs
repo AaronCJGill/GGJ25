@@ -145,10 +145,11 @@ public class BottleBehavior : MonoBehaviour
         updateGraphics();
 		
 		timer += Time.deltaTime;
-		if (timer >= 60) // 61 (+1 of timer)
+		if (timer >= levelTimerMax) // 61 (+1 of timer)
         {
             //change scene, level is over
             Debug.Log("Change Scene");
+            ScoreManager.instance.setScore(points);
             SceneManager.LoadScene("EndScene");
             
             //maybe retain the score here
