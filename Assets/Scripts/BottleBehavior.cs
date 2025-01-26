@@ -309,7 +309,8 @@ public class BottleBehavior : MonoBehaviour
         //change timer text
         //timeText.text = String.Format("{0:0.##}",Time.time)+ " / " + levelTimerMax+".00";
         timeText.text = String.Format("{0:0.##}", levelTimerMax - timer);
-        pointsText.text = "points: " + points;
+        //pointsText.text = "points: " + points;
+        pointsText.text = ""+ points;
         fizzSlider.value = powerAmnt;
         //powertext.text = powerAmnt+"";
         powertext.text = String.Format("{0:0.##}",powerAmnt);

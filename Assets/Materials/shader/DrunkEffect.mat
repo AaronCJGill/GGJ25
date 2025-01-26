@@ -68,7 +68,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistAmount: 0.010000001
+    - _DistAmount: 0
     - _DistSpeed: 7.39
     - _DstBlend: 0
     - _GlossMapScale: 1
