@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject particle;
 
+    [SerializeField] ParticleSystem hitParticles;
+
     //kill speed editable values
     //x values
     [SerializeField] float killSpeedXMin = -20;
@@ -80,8 +82,10 @@ public class Enemy : MonoBehaviour
         isKilled = true;
         //make a sound
         //communicate that this enemy has died
-        //play animation
+        //play animation + particles
         kidAnimatorController.GetComponent<Animator>().SetTrigger("hit");
+        hitParticles.Play();
+        
         BottleBehavior.instance.addPoints(points);
         _as.clip = hitReactions[Random.Range(0, hitReactions.Count)];
         killspeedY = Random.Range(killSpeedYMin, killSpeedYMax);
