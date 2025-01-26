@@ -88,6 +88,8 @@ public class Enemy : MonoBehaviour
         
         BottleBehavior.instance.addPoints(points);
         _as.clip = hitReactions[Random.Range(0, hitReactions.Count)];
+        _as.pitch = Random.Range(0.4f,1.5f);
+        _as.Play();
         killspeedY = Random.Range(killSpeedYMin, killSpeedYMax);
         killspeedX = Random.Range(killSpeedXMin, killSpeedXMax);
         GameObject p = Instantiate(ScorePopUp, transform);
