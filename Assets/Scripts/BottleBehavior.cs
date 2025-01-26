@@ -87,15 +87,18 @@ public class BottleBehavior : MonoBehaviour
     [SerializeField]
     Transform corkSpawnPosition;
 
+    public Image corkImage;
+
 
     private void shootBehavior()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
-            if (hasCork)
+            if (hasCork) // when cork is shot
             {
                 Debug.Log("Shooting Cork");
                 bottleObjectTemp.SetTrigger("ShootCork");
+                corkObject.SetActive(false);
             }
             else if (ammoCounter > 0 && !isReloading)
             {
@@ -149,6 +152,7 @@ public class BottleBehavior : MonoBehaviour
 
                     bottleObjectTemp.SetTrigger("MoveLeft");
                     reloadTXT.text = "";
+                    //corkObject.SetActive(true);
 
                 }
 
@@ -198,6 +202,8 @@ public class BottleBehavior : MonoBehaviour
         ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel + 0.002f);
 
         hasCork = true;
+        corkObject.SetActive(true);
+        
     }
     public void shootCork()
     {
@@ -283,7 +289,7 @@ public class BottleBehavior : MonoBehaviour
 
     private void shakeBehavior()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && ammoCounter > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ammoCounter > 0 && !hasCork)
         {
             powerAmnt += powerIncrement;
             decreaseTimerMax = Time.time + decreaseResetTime;
