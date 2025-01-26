@@ -14,6 +14,7 @@ public class TextPopUp : MonoBehaviour
 
     public void initThis(int Points)
     {
+        Debug.Log("Textpopup");
         textpop.text = "+"+Points;
 
         int r = Random.Range(0, 4);

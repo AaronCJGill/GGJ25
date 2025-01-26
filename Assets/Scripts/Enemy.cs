@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    //public float factor = 30f;
     public void Kill()
     {
         Debug.Log("Kill");
@@ -88,11 +88,16 @@ public class Enemy : MonoBehaviour
         
         BottleBehavior.instance.addPoints(points);
         _as.clip = hitReactions[Random.Range(0, hitReactions.Count)];
+        _as.pitch = Random.Range(0.4f,1.5f);
+        _as.Play();
         killspeedY = Random.Range(killSpeedYMin, killSpeedYMax);
         killspeedX = Random.Range(killSpeedXMin, killSpeedXMax);
         GameObject p = Instantiate(ScorePopUp, transform);
         p.GetComponent<TextPopUp>().initThis(points);
         p.transform.parent = BottleBehavior.instance.canvasReference;
+        //p.transform.position -= new Vector3(0,1,0) * factor;
+
+        p.transform.localScale = Vector3.one;
         //TODO:
         //ParticleSystem ps = particle.GetComponent<ParticleSystem>();
         //make this take on the sprite of this enemy
