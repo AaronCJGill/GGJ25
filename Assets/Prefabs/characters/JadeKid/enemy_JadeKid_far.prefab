@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1172257604968321227, guid: 07d2ad1b0f2f340bab5fdd172481e16e, type: 3}
+      propertyPath: speed
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172257604968321227, guid: 07d2ad1b0f2f340bab5fdd172481e16e, type: 3}
+      propertyPath: points
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3852737900554579665, guid: 07d2ad1b0f2f340bab5fdd172481e16e, type: 3}
       propertyPath: m_Name
       value: enemy_JadeKid_far
