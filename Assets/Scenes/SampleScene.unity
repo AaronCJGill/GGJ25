@@ -7797,7 +7797,7 @@ MonoBehaviour:
   powerMax: 3.5
   decreaseResetTime: 0.4
   decreaseDecrement: 1
-  levelTimerMax: 10
+  levelTimerMax: 5
   currentLevelTimer: 0
   timeText: {fileID: 198204495}
   close: {fileID: 387480225}

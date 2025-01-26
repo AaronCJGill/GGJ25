@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public const int amountOfScoresToSave = 10;
 
     public int lastSavedScore = -1;
-    public string playerName;
+    private string playerName;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -35,8 +35,13 @@ public class ScoreManager : MonoBehaviour
 
     public void checkPlayerName()
     {
+        Debug.Log("PlayerName is " + playerName + " " + PlayerPrefs.GetString("PlayerName"));
+
         if (string.IsNullOrEmpty(playerName))
+        {
             playerName = "Player";
+
+        }
     }
     private void initializeScores()
     {
@@ -66,7 +71,7 @@ public class ScoreManager : MonoBehaviour
         //otherwise find whichever score has the lowest and move that down. 
         Debug.Log("settingScore");
         checkPlayerName();
-        orderScores(playerName, lastSavedScore);
+        orderScores(PlayerPrefs.GetString("PlayerName"), lastSavedScore);
     }
 
     public void orderScores(string scoreName, int scoreToAdd)
@@ -120,27 +125,31 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log("replacing a score at position " + positionsToMove);
             //move backwards from these
-            for (int i = amountOfScoresToSave; i > positionsToMove; i--)
+            for (int i = amountOfScoresToSave-1; i >= positionsToMove; i--)
             {
-                int moveToPosition = i;//if its 10, then itll be 11
+                int moveToPosition = i+1;//if its 10, then itll be 11
+                int moveFromPosition = i;
                 string originalScoreNumKey = "HSScore" + i;
                 string originalScoreNameKey = "HSName" + i;
                 string newScoreNumKey = "HSScore" + moveToPosition;//first run should be at HSScore11, which is normally not accessed
                 string newScoreNameKey = "HSName" + moveToPosition;
 
-
                 if (PlayerPrefs.HasKey(originalScoreNameKey))
                 {
+                    Debug.Log("this key exists! at position " + i);
+                    Debug.Log(i + " : " + originalScoreNameKey + " " + originalScoreNumKey + " new: " + newScoreNumKey + " " + newScoreNameKey);
+
                     //if this position isnt empty
                     //we move it down by one
 
                     //get current name and score as well
-                    string currentName = PlayerPrefs.GetString(originalScoreNameKey);
-                    int currentScore = PlayerPrefs.GetInt(originalScoreNumKey);
-
+                    string currentName = PlayerPrefs.GetString(originalScoreNameKey);//get this keys name
+                    int currentScore = PlayerPrefs.GetInt(originalScoreNumKey);//get this keys score
+                    Debug.Log(i + " " + currentName + " " + currentScore);
                     //set the string at the new position to our current name
-                    PlayerPrefs.SetString(newScoreNameKey, currentName);
+                    PlayerPrefs.SetString(newScoreNameKey, currentName);//update the score of the old position
                     PlayerPrefs.SetInt(newScoreNumKey, currentScore);
+                    Debug.Log(i + " "+PlayerPrefs.GetString(newScoreNameKey) + PlayerPrefs.GetInt(newScoreNumKey));
                 }
 
             }
