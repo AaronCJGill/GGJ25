@@ -10,7 +10,11 @@ public class Cork : MonoBehaviour
     void Update()
     {
         //moves up constantly
-        transform.Translate(Vector2.up * speed);
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        if (transform.position.y > 50)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

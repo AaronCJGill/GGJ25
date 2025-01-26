@@ -43,7 +43,7 @@ public class BottleBehavior : MonoBehaviour
     GameObject corkObject;
     [SerializeField]
     TMP_Text powertext;
-
+    bool hasCork = false;
     float shotsLeft = 6;
     List<Transform> liquidPositions = new List<Transform>();//positions of the liquid in the bottle
     bool isEmpty { get { return shotsLeft <= 0; } }
@@ -84,13 +84,20 @@ public class BottleBehavior : MonoBehaviour
     List<UnityEngine.Transform> reloadPositions = new List<UnityEngine.Transform>();
     float reloadTimer = 1f;
     private Coroutine reloadCoroutine;
+    [SerializeField]
+    Transform corkSpawnPosition;
 
 
     private void shootBehavior()
     {
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
-            if (ammoCounter > 0 && !isReloading)
+            if (hasCork)
+            {
+                Debug.Log("Shooting Cork");
+                bottleObjectTemp.SetTrigger("ShootCork");
+            }
+            else if (ammoCounter > 0 && !isReloading)
             {
                 if (ammoCounter == 1)
                     reloadTXT.text = "RELOAD with SPACE";
@@ -137,14 +144,24 @@ public class BottleBehavior : MonoBehaviour
                 if (reloadCoroutine == null)
                 {
                     reloadCoroutine = StartCoroutine(reloadRoutine());
+                    //choose a random position from the reloadpositions list
+                    bottleUI.SetActive(false);
+
+                    bottleObjectTemp.SetTrigger("MoveLeft");
+                    reloadTXT.text = "";
+
                 }
 
             }
         }
     }
+
+
+
     [SerializeField]
     GameObject bottleUI;
-    GameObject bottleObjectTemp;
+    [SerializeField]
+    Animator bottleObjectTemp;
 
     [SerializeField]
     public Transform normalPos, offScreenPos;
@@ -152,33 +169,23 @@ public class BottleBehavior : MonoBehaviour
     public IEnumerator reloadRoutine()
     {
         //throws the bottle off screen and pops it back up from the bottom
-        bottleUI.GetComponent<RectTransform>().SetPositionAndRotation(offScreenPos.position , Quaternion.identity);
-        //choose a random position from the reloadpositions list
-        bottleUI.SetActive(false);
-
+        //bottleObjectTemp.gameObject.GetComponent<RectTransform>().SetPositionAndRotation(offScreenPos.position , Quaternion.identity);
         yield return new WaitForSeconds(reloadTimer);
-        //play sound
-        transform.position = offScreenPos.position;
-        transform.rotation = offScreenPos.rotation;
-
-        //lerp to the proper position
-
-        float t = 0;
-        float m = 0.5f;
-        
-        while (t < m)
-        {
-            transform.position = Vector2.Lerp(offScreenPos.position, normalPos.position, t/m);
-            t += Time.deltaTime;
-        }
-
-        transform.position = normalPos.position;
-
-        //
-        yield return new WaitForSeconds(0.5f);
+        //this just makes sure we do not do the reload multiple times
+    }
+    
+    public void BottleIsReset()
+    {
         reloadCoroutine = null;//reset reference
 
-        Debug.Log("happening");
+
+        bottleObjectTemp.ResetTrigger("MoveLeft");
+        //bottleObjectTemp.SetTrigger("Idle");
+        bottleObjectTemp.ResetTrigger("MoveUp");
+
+
+
+        Debug.Log("BottleReset");
         ammoCounter = 6;
         liquidImage.GetComponent<RectTransform>().anchoredPosition =
             new Vector2(liquidImage.GetComponent<RectTransform>().anchoredPosition.x,
@@ -189,9 +196,26 @@ public class BottleBehavior : MonoBehaviour
         ImageEffectBasic ImageFXRef = mainCam.GetComponent<ImageEffectBasic>();
         float currentDrunkLevel = ImageFXRef.effectMaterial.GetFloat("_DistAmount");
         ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel + 0.002f);
+
+        hasCork = true;
     }
-    
-    
+    public void shootCork()
+    {
+        Debug.Log("SpawningCork");
+        hasCork = false;
+        Instantiate(corkObject, corkSpawnPosition);
+        bottleObjectTemp.ResetTrigger("ShootCork");
+        splashFromShot.Play();
+    }
+
+    public void finalizeCorkShot()
+    {
+        Debug.Log("Finalized Cork Shot");
+        bottleUI.SetActive(true);
+        powerAmnt = 0;
+
+    }
+
     public Camera mainCam;
     
 
@@ -215,7 +239,7 @@ public class BottleBehavior : MonoBehaviour
         }
         
         //when the powerAmnt is bigger than 1
-        if(!isReloading)
+        if(!hasCork)
         {
             if (powerAmnt >= 1 && powerAmnt < 2)
             {
