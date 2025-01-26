@@ -722,7 +722,7 @@ MonoBehaviour:
   powerMax: 3.5
   decreaseResetTime: 0.4
   decreaseDecrement: 1
-  levelTimerMax: 60
+  levelTimerMax: 2
   currentLevelTimer: 0
   timeText: {fileID: 1041283571}
   close: {fileID: 38241407}
@@ -9659,6 +9659,10 @@ PrefabInstance:
     - target: {fileID: 7552165537496761106, guid: 7e6b402620f284f47b446c5f694b63b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797094367558335348, guid: 7e6b402620f284f47b446c5f694b63b7, type: 3}
+      propertyPath: m_Volume
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 8797094367558335348, guid: 7e6b402620f284f47b446c5f694b63b7, type: 3}
       propertyPath: m_PlayOnAwake

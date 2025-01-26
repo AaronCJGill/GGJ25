@@ -13,13 +13,17 @@ public class AnimatedBottle : MonoBehaviour
     public List<AudioClip> DrinkingSoundClips = new List<AudioClip>();
 
     public static AnimatedBottle instance;
+
     private void Awake()
     {
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
         }
-        instance = this;
+        else if (instance == null && instance != this)
+        {
+            instance = this;
+        }
     }
 
     public void playClip()

@@ -13,11 +13,20 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Is music manager null " + instance != null);
+
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            Debug.Log("Destroy musicmanager");
+
         }
-        instance = this;
+        else if (instance == null && instance != this)
+        {
+            instance = this;
+            Debug.Log("setting musicmanager");
+
+        }
         DontDestroyOnLoad(gameObject);
     }
 

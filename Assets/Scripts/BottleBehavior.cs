@@ -59,8 +59,11 @@ public class BottleBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        instance = this;
-            
+        else if (instance == null && instance != this)
+        {
+            instance = this;
+        }
+
         liquidImagey = liquidImage.GetComponent<RectTransform>().anchoredPosition.y;
         
         //reset shaders
@@ -109,7 +112,9 @@ public class BottleBehavior : MonoBehaviour
             {
                 //play the sound so the player knows that theyre shooting
                 if(powerAmnt >= 1)
-                    AnimatedBottle.instance.playFizzSound();//only play a sound if we shoot
+                    AnimatedBottle.
+                        
+                        .playFizzSound();//only play a sound if we shoot
                 if (powerAmnt >= 3)
                 {
                     Instantiate(fizzbubbles, far);

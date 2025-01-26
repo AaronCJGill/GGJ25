@@ -51,7 +51,10 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        instance = this;
+        else if (instance == null && instance != this)
+        {
+            instance = this;
+        }
     }
 
     enum loc
