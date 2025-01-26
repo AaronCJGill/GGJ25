@@ -8394,6 +8394,7 @@ MonoBehaviour:
   fizzbubbles: {fileID: 1827134915349843341, guid: 7f5863d9842d08b4886fed7f70c08642, type: 3}
   corkObject: {fileID: 3338143205054569206, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
   powertext: {fileID: 431375029}
+  canvasReference: {fileID: 0}
   liquidImage: {fileID: 1223072904}
   reloadTXT: {fileID: 378195023}
   splashFromShot: {fileID: 270696775}
@@ -8722,9 +8723,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.38
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -8841,7 +8842,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _as: {fileID: 1894130509}
-  clips: []
+  PopSoundClips:
+  - {fileID: 8300000, guid: 8fceabbbc00479041a3750911691cc27, type: 3}
+  - {fileID: 8300000, guid: 0367e0da7e4fcf041bc578331b33edf4, type: 3}
+  - {fileID: 8300000, guid: a7fea93677f36f64491ac67d7cb6ac1f, type: 3}
+  BottleChangeClips:
+  - {fileID: 8300000, guid: 578301c0dd4e33e41bbe737bcf9f1e87, type: 3}
+  - {fileID: 8300000, guid: 8ad66b175edfbfa468554887833eece7, type: 3}
+  FizzSoundClips:
+  - {fileID: 8300000, guid: 29f46206d78091a4381bd229de90941c, type: 3}
+  - {fileID: 8300000, guid: e96abfc85e5895b4b88257117a5ce359, type: 3}
+  BottleBreakSound:
+  - {fileID: 8300000, guid: 64cb7bd1049bf8c41a802f006d036a3e, type: 3}
+  DrinkingSoundClips:
+  - {fileID: 8300000, guid: d51ccdf2a1eb4894e89dfd240d837be1, type: 3}
 --- !u!1 &1905485094
 GameObject:
   m_ObjectHideFlags: 0
@@ -9055,63 +9069,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &2039600241
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.1258183
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.9293921
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226037125783836623, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3338143205054569206, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
-      propertyPath: m_Name
-      value: CorkObject
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 02d83f38b7d794740b0e60d5a4ae3b07, type: 3}
 --- !u!1 &2067160022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9262,4 +9219,3 @@ SceneRoots:
   - {fileID: 1948255843}
   - {fileID: 442090044}
   - {fileID: 935551775}
-  - {fileID: 2039600241}

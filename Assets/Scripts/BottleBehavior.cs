@@ -48,7 +48,7 @@ public class BottleBehavior : MonoBehaviour
     List<Transform> liquidPositions = new List<Transform>();//positions of the liquid in the bottle
     bool isEmpty { get { return shotsLeft <= 0; } }
     bool isReloading = false;
-
+    public Transform canvasReference;
 
     public static BottleBehavior instance;
     private void Awake()
@@ -94,14 +94,19 @@ public class BottleBehavior : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) // shoot
         {
+            Debug.Log("Shots left " + ammoCounter);
             if (hasCork) // when cork is shot
             {
                 Debug.Log("Shooting Cork");
                 bottleObjectTemp.SetTrigger("ShootCork");
+
+                reloadTXT.text = "";
                 //corkObject.SetActive(false);
             }
             else if (ammoCounter > 0 && !isReloading)
             {
+                //play the sound so the player knows that theyre shooting
+                AnimatedBottle.instance.playFizzSound();
                 if (ammoCounter == 1)
                     reloadTXT.text = "RELOAD with SPACE";
                 if (powerAmnt >= 3)
@@ -202,6 +207,7 @@ public class BottleBehavior : MonoBehaviour
         ImageFXRef.effectMaterial.SetFloat("_DistAmount", currentDrunkLevel + 0.002f);
 
         hasCork = true;
+        reloadTXT.text = "SHOOT CORK with SPACE";
         corkObject.SetActive(true);
         
     }
@@ -313,6 +319,12 @@ public class BottleBehavior : MonoBehaviour
         fizzSlider.value = powerAmnt;
         //powertext.text = powerAmnt+"";
         powertext.text = String.Format("{0:0.##}",powerAmnt);
+
+    }
+
+    public void showCorkText()
+    {
+        reloadTXT.text = "SHOOT CORK with SPACE";
     }
 
     public void addPoints(int pointsToAdd)
