@@ -10,15 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1080519727274192207, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: speed
-      value: 8
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 1080519727274192207, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: points
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3156416778048148309, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Name
       value: enemyHighWorth Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Color.b
@@ -31,6 +35,10 @@ PrefabInstance:
     - target: {fileID: 4482845254612829866, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_Color.r
       value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259461264383950941, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6901961
       objectReference: {fileID: 0}
     - target: {fileID: 6285388585532931139, guid: 12aeee4afc7cf22439ffa6d7c2dea8a3, type: 3}
       propertyPath: m_LocalPosition.x
