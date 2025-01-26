@@ -98,7 +98,7 @@ public class BottleBehavior : MonoBehaviour
             {
                 Debug.Log("Shooting Cork");
                 bottleObjectTemp.SetTrigger("ShootCork");
-                corkObject.SetActive(false);
+                //corkObject.SetActive(false);
             }
             else if (ammoCounter > 0 && !isReloading)
             {
