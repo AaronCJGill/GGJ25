@@ -21,4 +21,26 @@ public class SceneChange : MonoBehaviour
         SceneManager.LoadScene(sceneName);
 
     }
+
+
+///// ALT CTRL
+    public GameObject button;
+    public Sprite newSprite;
+
+    void Update()
+    {
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ChangeSprite(newSprite);
+            
+            //SceneManager.LoadScene(sceneName);
+            
+        }
+    }
+
+    public void ChangeSprite(Sprite sprite) {
+        button.GetComponent<Image>().sprite = newSprite;
+        Invoke("buttonClick", 0.5f);
+    }
 }

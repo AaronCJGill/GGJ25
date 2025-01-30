@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click anywhere to continue
+  m_text: Shake controller to continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ed210c105ac447aaaa6863034486cb, type: 2}
   m_sharedMaterial: {fileID: -6261794849642272229, guid: 71ed210c105ac447aaaa6863034486cb, type: 2}
@@ -1381,6 +1381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: SampleScene
   inputfield: {fileID: 1647423036}
+  button: {fileID: 1380605708}
+  newSprite: {fileID: 21300000, guid: 423bf7aeb729b4b85bf224e801105494, type: 3}
 --- !u!114 &1380605711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,7 +1402,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1410,8 +1412,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: efdb103343f274965a12d83e0d511964, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 423bf7aeb729b4b85bf224e801105494, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:

@@ -23,7 +23,7 @@ public class ContextSceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetMouseButtonDown(0))
         {
             if (counter == 0)
             {
@@ -38,16 +38,16 @@ public class ContextSceneManager : MonoBehaviour
                 textBox.text = "Oh...it's you";
             }else if (counter == 3)
             {
-                textBox.text = "Please try and behave this year";
+                textBox.text = "Please try and behave this year...";
             }else if (counter == 4)
             {
-                textBox.text = "It's Bobbi's special day today and Sally's mom has been sober for a year now";
+                textBox.text = "It's Bobbi's special day today and Sally's mom has been sober for a year now...";
             }else if (counter == 5)
             {
-                textBox.text = "So please don't press <b>LEFT SHIFT</b> to shake the champagne bottle";
+                textBox.text = "So please don't <b>SHAKE THE CONTROLLER</b> to shake the champagne bottle.";
             }else if (counter == 6)
             {
-                textBox.text = "Especially don't press <b>SPACE</b> to shoot the kids with champagne";
+                textBox.text = "Especially don't  <b>PRESS THE BUTTON</b> to shoot the kids with champagne...";
             }else if (counter == 7)
             {
                 textBox.text = "Anyways, what was your name again?";
