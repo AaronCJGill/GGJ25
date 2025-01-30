@@ -44,10 +44,10 @@ public class ContextSceneManager : MonoBehaviour
                 textBox.text = "It's Bobbi's special day today and Sally's mom has been sober for a year now...";
             }else if (counter == 5)
             {
-                textBox.text = "So please don't <b>SHAKE THE CONTROLLER</b> to shake the champagne bottle.";
+                textBox.text = "So please don't <b>SHAKE</b> or press <b>LEFT SHIFT</b> to shake the champagne bottle.";
             }else if (counter == 6)
             {
-                textBox.text = "Especially don't  <b>PRESS THE BUTTON</b> to shoot the kids with champagne...";
+                textBox.text = "Especially don't press the <b>BUTTON</b> or <b>SPACE</b> to shoot the kids with champagne...";
             }else if (counter == 7)
             {
                 textBox.text = "Anyways, what was your name again?";
