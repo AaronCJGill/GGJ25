@@ -36,7 +36,7 @@ public class MusicManager : MonoBehaviour
     public void playNextSong()
     {
         index++;
-        if (index > clipList.Count)
+        if (index >= clipList.Count)
         {
             index = 0;
             Debug.Log("Resetting list");

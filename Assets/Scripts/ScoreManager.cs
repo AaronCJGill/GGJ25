@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public const int amountOfScoresToSave = 10;
 
-    public int lastSavedScore = -1;
+    public int lastScore = -1;
     private string playerName;
     private void Awake()
     {

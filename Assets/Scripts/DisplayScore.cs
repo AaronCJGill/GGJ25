@@ -9,6 +9,8 @@ public class DisplayScore : MonoBehaviour
 {
 
     public TMP_Text textScore;
+    public TMP_Text lastScoreText;
+
     private void Start()
     {
         setScoreUI();
@@ -70,7 +72,7 @@ public class DisplayScore : MonoBehaviour
 
     public void orderScores(string scoreName, int scoreToAdd)
     {
-
+        lastScoreText.text = scoreToAdd+"";
         int positionsToMove = 500;
         bool replacing = false;
         for (int i = 0; i < ScoreManager.amountOfScoresToSave; i++)
@@ -117,5 +119,6 @@ public class DisplayScore : MonoBehaviour
         }
 
     }
+    
 
 }
