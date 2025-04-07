@@ -8,11 +8,13 @@ using UnityEngine;
 public class ImageEffectBasic : MonoBehaviour
 {
     public Material effectMaterial;
+    public static bool EffectEnabled = true;
 
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        Graphics.Blit(source, destination, effectMaterial);
+        if (EffectEnabled)
+            Graphics.Blit(source, destination, effectMaterial);
     }
 }
 

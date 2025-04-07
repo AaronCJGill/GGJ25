@@ -8,7 +8,7 @@ public class SceneChange : MonoBehaviour
 {
     public string sceneName;
     public TMP_InputField inputfield;
-   
+
     public void buttonClick()
     {
         SceneManager.LoadScene(sceneName);
@@ -17,8 +17,15 @@ public class SceneChange : MonoBehaviour
     public void buttonClickName()
     {
         ScoreManager.instance.initializeName(inputfield.text);
-        
+
         SceneManager.LoadScene(sceneName);
 
     }
+
+    public void ToggleShader(bool val)
+    {
+        ImageEffectBasic.EffectEnabled = val;
+        Debug.Log("Toggle: " + val);
+    }
+
 }
