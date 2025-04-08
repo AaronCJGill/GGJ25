@@ -13,8 +13,10 @@ public class ImageEffectBasic : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (EffectEnabled)
-            Graphics.Blit(source, destination, effectMaterial);
+        if (!EffectEnabled)
+            effectMaterial.SetFloat("_DistAmount", 0f);
+
+        Graphics.Blit(source, destination, effectMaterial);
     }
 }
 

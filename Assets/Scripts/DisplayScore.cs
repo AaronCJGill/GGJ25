@@ -28,6 +28,12 @@ public class DisplayScore : MonoBehaviour
     public void setScoreUI()
     {
         textScore.text = getScores();
+        lastScoreText.text = PlayerPrefs.GetInt("lastScore") +"";
+    }
+
+    public void setCurrentScore(int scoreToAdd)
+    {
+        lastScoreText.text = scoreToAdd+"";
     }
     private string getScores()
     {
@@ -72,7 +78,6 @@ public class DisplayScore : MonoBehaviour
 
     public void orderScores(string scoreName, int scoreToAdd)
     {
-        lastScoreText.text = scoreToAdd+"";
         int positionsToMove = 500;
         bool replacing = false;
         for (int i = 0; i < ScoreManager.amountOfScoresToSave; i++)

@@ -72,6 +72,8 @@ public class ScoreManager : MonoBehaviour
         //loop through and find the first score that has not been set, replace that score with this score.
         //otherwise find whichever score has the lowest and move that down. 
         Debug.Log("settingScore");
+        PlayerPrefs.SetInt("lastScore", lastSavedScore);
+
         checkPlayerName();
         orderScores(PlayerPrefs.GetString("PlayerName"), lastSavedScore);
     }
@@ -112,7 +114,6 @@ public class ScoreManager : MonoBehaviour
                 break;
             }
         }
-
 
 
 
