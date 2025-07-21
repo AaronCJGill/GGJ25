@@ -8772,8 +8772,10 @@ MonoBehaviour:
   - {fileID: 3122601690340056188, guid: 8a0ccaf1b158647a596f07708ad8f33c, type: 3}
   midEnemies:
   - {fileID: 6956657654398131841, guid: 0d8e0e31cc2a845f18ee7bc21be2022f, type: 3}
+  - {fileID: 3122601690340056188, guid: 1852c2b3725004b3fa160f2a9b041c34, type: 3}
   closeEnemies:
   - {fileID: 3122601690340056188, guid: e819a8cb1a71047b4abaad8fd1efa896, type: 3}
+  - {fileID: 3122601690340056188, guid: ee2507411bdfe47e596e07bbaf342aab, type: 3}
   useSpawnPatterns: 0
   farnemiesGroup: []
   midEnemiesGroup: []
